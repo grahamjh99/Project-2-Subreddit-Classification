@@ -36,7 +36,7 @@ Note: Rather than working in this template notebook, make a brand new "scraping"
 - Code must be in at least one clearly commented Jupyter Notebook.
 - A readme/executive summary in markdown.
 - You must submit your slide deck as a PDF.
-- Materials must be submitted by **10:00 AM (EST) on Wednesday, 7/10**.
+- Materials must be submitted by **10:00 AM (EST) on Tuesday, 12/3**.
 
 ---
 
