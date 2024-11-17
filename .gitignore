@@ -1,2 +1,6 @@
 # ignore env files
 Reddit Info.env
+
+# Ignore jupyter lab checkpoints
+.ipynb_checkpoints/
+
