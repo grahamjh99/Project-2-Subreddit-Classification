@@ -3,4 +3,5 @@ Reddit Info.env
 
 # Ignore jupyter lab checkpoints
 .ipynb_checkpoints/
+Reddit-PRAW-tutorial.ipynb
 

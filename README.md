@@ -1,4 +1,4 @@
-# Project Title: Determining which Subreddit a post belongs to 
+# Project Title: Determining which Subreddit a Post Belongs To 
 Determining if a post belongs to the subreddit wallstreetbets or stocks
 
 # Table of contents
@@ -10,7 +10,8 @@ Determining if a post belongs to the subreddit wallstreetbets or stocks
 6. [Next Steps](#next-steps)
 
 ## Overview:
-With increasing building costs it is more important than ever to know what features sell in a home. Using a linear regression model the best features of houses can be determined so they will sell even in locations that would be considered undesriable.
+The stock market where most retirement savings are placed and where most millionaires and all billionaires are made. With about $300 billion on average going through the market daily (google ai) there is a significant opportunity to make money. Certain subreddits are known to be heavily focused on stocks and the market in general. Some have made international news such as the subreddit wallstreetbets during the extreme rise in the stock price of Gamestop. These subreddits thus have a large impact on retail tradding and are useful resources to understand retail sentiment and where retail may be putting it's money. It is therefore useful to be able to determine which subreddit a post belongs to since subreddits like wallstreetbets is primarily a gambling subreddit while the stocks subreddit is mostly about discussing the stock and determining if it is worth the investment.  
+
 
 ---
 
@@ -19,17 +20,22 @@ The data was scrapped from the subreddits wallstreetbets and stocks. The scrapin
 
 ## Requirements
 - Libraries used:
-    - matplotlib.pyplot
+    - praw
     - pandas
-    - numpy
-    - seaborn
-    - train_test_split from sklearn.model_selection
-    - LinearRegression from sklearn.linear_model
-    - RidgeCV and Ridge from sklearn.linear_model
-    - StandardScaler from sklearn.preprocessing
-    - metrics from sklearn
+    - numpy 
+    - matplotlib.pyplot
+    - load_dotenv from dotenv
+    - os
+    - import train_test_split, RandomizedSearchCV from sklearn.model_selection 
+    - Pipeline from sklearn.pipeline 
+    - CountVectorizer from sklearn.feature_extraction.text
+    - RandomForestClassifier from sklearn.ensemble
+    - joblib
+    - SVC from sklearn.svm
+    - confusion_matrix, ConfusionMatrixDisplay, classification_report from sklearn.metrics
+    - re
 - Data used:
-    - Ames, Iowa housing data
+    - Scrapped the subreddits wallstreetbets and stocks for the newsts 100 posts about 2 times a day to get 1100 posts from each subreddit
 
 
 ## Executive Summary
@@ -38,17 +44,21 @@ The data was scrapped from the subreddits wallstreetbets and stocks. The scrapin
 #### Methods
 - EDA:
     - The subreddits were changed to 0 for wallstreetbets and 1 for stocks.
-    - The title and the self_text were concatenated and used to train the model.
+    - All null values in both subreddits were changed to the string 'Image'
+    - Concatenated the DataFrames of both subreddits since they were collected separately
 
 - Modeling:
-    - designed two Random Forest models 
+    - Designed two Random Forest models one using CountVectorizer to remove english stop words and one using CountVectorizer and not removing english stop words
+    - The parameters of both random forest models were found using RandomSearchCV and narrowed down from there.
+        * The firs model used 50 iterations of RandomSearchCV and the second used 100
+    - Designed a Support Vector Machine model (rfb) using RandomSearchCV to find the best paramaters using 500 iterations.
   
 #### Findings
-- Through this model it was found that the parameters associated with the Garage of the house had a significant impact on the house's price. The best example is that not having a garage changed the predicted price by about 150%
-- Square footage is a good predictor of sales price
-- Loaction is a good predictor of sales price
-- The type of building is not as great of a predictor of sales price as expected
-- The age and the year of remodling had high correlations to sale price but did not change the sale prices overly much
+- The most common words in the wallstreetbets subreddit were ai, mstr(Micro Strategy), and earnings
+- The most common words in the stocks subreddit were growth, revenue, million and billion.
+    * Million and billion are likely refering to the amount of revenue a company has made in a quarter or overall. 
 
 #### Next Steps
-- The next steps of this research involve adding loan and intrest rate information to better understand the amount of debt people are willing to take on to purchase a home. There also should be a closer examination of the columns and what they correspond to in order to remove repeats and similar data. Removal of outliers might help the model greatly 
+- Add in scrapping to extract stock tickers
+- some form of scrapping to extract the poster's analysis of the stock
+- Add sentiment analysis on ticker discussions
