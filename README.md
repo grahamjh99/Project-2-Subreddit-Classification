@@ -60,5 +60,5 @@ The data was scrapped from the subreddits wallstreetbets and stocks. The scrapin
 
 #### Next Steps
 - Add in scrapping to extract stock tickers
-- some form of scrapping to extract the poster's analysis of the stock
+- Some form of scrapping to extract the poster's analysis of the stock
 - Add sentiment analysis on ticker discussions
