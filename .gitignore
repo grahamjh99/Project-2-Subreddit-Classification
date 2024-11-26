@@ -5,3 +5,17 @@ Reddit Info.env
 .ipynb_checkpoints/
 Reddit-PRAW-tutorial.ipynb
 
+# Ignore virtual documents
+.virtual_documents/
+
+# Ignore datasets
+data/
+
+# Ignore all models
+Models/
+
+# Ignore all image files
+Images/
+
+# Ignore specific notebooks
+Reddit-PRAW-tutorial.ipynb
