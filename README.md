@@ -49,11 +49,18 @@ The data was scrapped from the subreddits wallstreetbets and stocks. The scrapin
 
 - Modeling:
     - Designed two Random Forest models one using CountVectorizer to remove english stop words and one using CountVectorizer and not removing english stop words
+    - First Random Forest model without removing english stopwords:
+        * Best Parameters: n_estimators: 113, min_samples_split: 3, max_depth: 30, ngram_range: (1, 3), min_df: 6, max_features: 410, max_df: 0.8
+    - Second Random Forest model with english stop words removed:
+        * Best Parameters: n_estimators: 238, min_samples_split: 4, max_depth: 29, ngram_range: (1, 1), min_df: 5, max_features: 490, max_df: 0.8
     - The parameters of both random forest models were found using RandomSearchCV and narrowed down from there.
-        * The firs model used 50 iterations of RandomSearchCV and the second used 100
+        * The first model used 50 iterations of RandomSearchCV and the second used 100
     - Designed a Support Vector Machine model (rfb) using RandomSearchCV to find the best paramaters using 500 iterations.
+        * This used CountVectorizer without removing english stopwords
+        * Best Parameters: C: 2.0, ngram_range: (1, 1), min_df: 15, max_features: 1000, max_df: 0.95
   
 #### Findings
+- The most important feature was the word Image.
 - The most common words in the wallstreetbets subreddit were ai, mstr(Micro Strategy), and earnings
 - The most common words in the stocks subreddit were growth, revenue, million and billion.
     * Million and billion are likely refering to the amount of revenue a company has made in a quarter or overall. 
